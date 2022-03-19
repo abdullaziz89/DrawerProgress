@@ -5,10 +5,10 @@ trying fix react navigation drawer progress undefined
 
 clone the repo and run
 
-####npm i
+npm i
 
 and
 
-#####expo start
+expo start
 
 run the project and try it.
