@@ -1,8 +1,14 @@
 # DrawerProgress
-Debug the Drawer Progress
+###Debug the Drawer Progress
 
-trying fix react navigation drawer progress undefind
+trying fix react navigation drawer progress undefined
 
-clone the repo and run npm i and expo start
+clone the repo and run
 
-run the projject and try it.
+####npm i
+
+and
+
+#####expo start
+
+run the project and try it.
