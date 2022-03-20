@@ -1,17 +1,19 @@
-import {DrawerContentScrollView, DrawerItemList, useDrawerProgress} from "@react-navigation/drawer";
-import {useEffect} from "react";
+import {DrawerContentScrollView, DrawerItem, DrawerItemList} from "@react-navigation/drawer";
+import Animated from "react-native-reanimated";
 
-export default () => {
+export default ({progress, ...rest}) => {
 
-    const progress = useDrawerProgress()
-
-    useEffect(() => {
-        console.log(progress)
-    }, []);
+    const translateX = Animated.interpolate(progress, {
+        inputRange: [0, 1],
+        outputRange: [-100, 0],
+    });
 
     return (
-        <DrawerContentScrollView {...props}>
-            <DrawerItemList {...props} />
+        <DrawerContentScrollView {...rest}>
+            <Animated.View style={{ transform: [{ translateX }] }}>
+                <DrawerItemList {...rest} />
+                <DrawerItem label="Help" onPress={() => alert('Link to help')} />
+            </Animated.View>
         </DrawerContentScrollView>
     );
 }

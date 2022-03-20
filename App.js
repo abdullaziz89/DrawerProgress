@@ -1,36 +1,37 @@
 import {StyleSheet, View, Text, Platform} from 'react-native';
 import {SafeAreaView} from "react-native";
 import {NavigationContainer} from "@react-navigation/native";
-import {createDrawerNavigator, DrawerContentScrollView, DrawerItemList} from "@react-navigation/drawer";
+import {
+    createDrawerNavigator,
+    DrawerContentScrollView,
+    DrawerItemList,
+    useDrawerProgress
+} from "@react-navigation/drawer";
 import 'react-native-gesture-handler';
 import Feed from "./Screens/Feed";
 import Article from "./Screens/Article";
 import CustomDrawer from "./components/CustomDrawer";
+import Animated, {useAnimatedStyle} from "react-native-reanimated";
+import {useEffect, useState} from "react";
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
+
     return (
-            <NavigationContainer>
-                <Drawer.Navigator
-                    sceneContainerStyle={styles.sceneContainerStyle}
-                    screenOptions={{
-                        drawerType: Platform.OS === 'ios' ? 'slide' : 'front',
-                        activeBackgroundColor: 'transparent',
-                        activeTintColor: 'white',
-                        inactiveTintColor: 'white',
-                    }}
-                    drawerStyle={styles.drawerStyle}
-                    drawerContant={() => <CustomDrawer/>}
-                >
-                    <Drawer.Screen name="Feed" >
-                        {props => <Feed {...props} />}
-                    </Drawer.Screen>
-                    <Drawer.Screen name="Article">
-                        {props => <Article {...props} />}
-                    </Drawer.Screen>
-                </Drawer.Navigator>
-            </NavigationContainer>
+        <NavigationContainer>
+            <Drawer.Navigator
+                useLegacyImplementation
+                drawerContant={(props) =>  <CustomDrawer {...props} />}
+            >
+                <Drawer.Screen name="Feed">
+                    {props => <Feed {...props} />}
+                </Drawer.Screen>
+                <Drawer.Screen name="Article">
+                    {props => <Article {...props} />}
+                </Drawer.Screen>
+            </Drawer.Navigator>
+        </NavigationContainer>
     );
 }
 

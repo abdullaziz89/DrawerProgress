@@ -1,15 +1,15 @@
 import {StyleSheet, Text, View} from "react-native";
-import {useDrawerProgress} from "@react-navigation/drawer";
+import Animated, {useAnimatedStyle} from "react-native-reanimated";
+import {useEffect} from "react";
+
 
 export default (props) => {
 
-
-
     return (
-        <View style={styles.container}>
+        <Animated.View style={[styles.container]}>
             <Text>Feed View</Text>
             <Text>Drawer Progress:</Text>
-        </View>
+        </Animated.View>
     );
 }
 
